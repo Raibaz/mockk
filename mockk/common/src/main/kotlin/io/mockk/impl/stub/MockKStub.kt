@@ -95,7 +95,7 @@ open class MockKStub(
     private fun shouldRelax(invocation: Invocation) = when {
         relaxed -> true
         relaxUnitFun &&
-                invocation.method.returnsUnit -> true
+            (invocation.method.returnsUnit || invocation.method.isFnCall) -> true
         else -> false
     }
 
